@@ -1,9 +1,11 @@
+const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const { Door, validate } = require("../models/door");
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+router.get("/", [auth, admin], async (req, res) => {
   const doors = await Door.find().sort("name");
   res.send(doors);
 });
@@ -30,7 +32,7 @@ router.put("/:id", async (req, res) => {
 
   res.send(door);
 });
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const door = await Door.findByIdAndRemove(req.params.id);
 
   if (!door)
