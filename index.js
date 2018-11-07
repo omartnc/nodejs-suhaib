@@ -8,6 +8,7 @@ const members = require("./routers/members");
 const doortitles = require("./routers/doortitles");
 const users = require("./routers/users");
 const auth = require("./routers/auth");
+const control = require("./routers/control");
 
 const express = require("express");
 const app = express();
@@ -29,7 +30,8 @@ app.use("/api/members", members);
 app.use("/api/doortitles", doortitles);
 app.use("/api/users", users);
 app.use("/api/auth", auth);
+app.use("/api/control", control);
 
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 1000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 //Face ID and Door ID

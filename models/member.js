@@ -15,6 +15,12 @@ const schemaMember = new mongoose.Schema({
     minlength: 5,
     maxlength: 200
   },
+  faceId: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 1024
+  },
   title: {
     type: titleSchema,
     required: true
@@ -31,6 +37,10 @@ function validateMember(member) {
     surName: Joi.string()
       .min(5)
       .max(200)
+      .required(),
+    faceId: Joi.string()
+      .min(5)
+      .max(1024)
       .required(),
     titleId: Joi.objectId().required()
   };

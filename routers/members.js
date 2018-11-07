@@ -26,6 +26,7 @@ router.post("/", async (req, res) => {
   const member = new Member({
     name: req.body.name,
     surName: req.body.surName,
+    faceId: req.body.faceId,
     title: {
       _id: title._id,
       name: title.name
@@ -47,6 +48,7 @@ router.put("/:id", async (req, res) => {
     {
       name: req.body.name,
       surName: req.body.surName,
+      faceId: req.body.faceId,
       title: {
         _id: title._id,
         name: title.name

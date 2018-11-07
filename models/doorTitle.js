@@ -24,6 +24,13 @@ function validateDoorTitle(DoorTitle) {
   };
   return Joi.validate(DoorTitle, schema);
 }
+function validateDoorTitleForControl(DoorTitle) {
+  const schema = {
+    doorId: Joi.objectId().required()
+  };
+  return Joi.validate(DoorTitle, schema);
+}
 
 exports.DoorTitle = DoorTitle;
 exports.validate = validateDoorTitle;
+exports.validateForControl = validateDoorTitleForControl;
